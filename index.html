@@ -50,9 +50,8 @@
         .teacher-card { text-align: center; background: #fff; padding: 25px; border-radius: 20px; border: 1px solid #f0f0f0; transition: all 0.3s ease; box-shadow: 0 5px 15px rgba(0,0,0,0.02); }
         .teacher-card:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); }
         .teacher-photo { width: 130px; height: 130px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 5px solid white; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
-        .teacher-name { font-weight: 700; font-size: 1.1rem; color: var(--primary-color); margin-bottom: 15px; min-height: 3em; display: flex; align-items: center; justify-content: center; }
+        .teacher-name { font-weight: 700; font-size: 1.1rem; color: var(--primary-color); margin-bottom: 15px; min-height: 3.5em; display: flex; align-items: center; justify-content: center; }
         
-        /* КНОПКА ЗАПИСИ (Ссылка) */
         .btn-consult {
             display: inline-block;
             background: white;
@@ -70,8 +69,7 @@
         /* ТАРИФЫ */
         .pricing { text-align: center; background: linear-gradient(135deg, #fff 0%, #fff3e0 100%); padding: 50px; border-radius: 30px; border: 2px solid var(--accent-color); }
         .price-tag { font-size: 3rem; color: #d32f2f; font-weight: bold; margin: 20px 0; }
-        .cta-main { display: inline-block; background: var(--accent-color); color: white; padding: 20px 50px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.2rem; box-shadow: 0 10px 25px rgba(245, 124, 0, 0.4); transition: transform 0.2s; }
-        .cta-main:hover { transform: scale(1.05); }
+        .cta-main { display: inline-block; background: var(--accent-color); color: white; padding: 20px 50px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.2rem; box-shadow: 0 10px 25px rgba(245, 124, 0, 0.4); }
 
         @media (max-width: 768px) {
             h1 { font-size: 2.2rem; }
@@ -110,7 +108,7 @@
     
     <section>
         <h2>Ведущие проекта</h2>
-        <p style="margin-bottom: 20px; color: #666;">Вы можете записаться на личную консультацию к любому из наших наставников.</p>
+        <p style="margin-bottom: 25px; color: #666;">Вы можете записаться на личную консультацию к любому из наших наставников.</p>
         
         <div class="teachers-grid">
             <div class="teacher-card">
@@ -140,7 +138,7 @@
             <div class="teacher-card">
                 <img src="oksana.jpg" alt="Оксана Ефремова" class="teacher-photo">
                 <div class="teacher-name">Оксана Ефремова<br>(Враджараса)</div>
-               <a href="https://docs.google.com/forms/d/e/1FAIpQLSdBabVnMuXwZ66Mos2x5LkstwskzjzOcwI6xeicv0gqvSrNRw/viewform?usp=pp_url&entry.348608589=%D0%9E%D0%BA%D1%81%D0%B0%D0%BD%D0%B0+%D0%95%D1%84%D1%80%D0%B5%D0%BC%D0%BE%D0%B2%D0%B0" target="_blank" class="btn-consult">Записаться</a>
+               <a href="https://docs.google.com/forms/d/e/1FAIpQLSdBabVnMuXwZ66Mos2x5LkstwskzjzOcwI6xeicv0gqvSrNRw/viewform?usp=pp_url&entry.348608589=%D0%9E%D0%BA%D1%81%D0%BD%D0%B0+%D0%95%D1%84%D1%80%D0%B5%D0%BC%D0%BE%D0%B2%D0%B0" target="_blank" class="btn-consult">Записаться</a>
             </div>
 
             <div class="teacher-card">
@@ -160,56 +158,21 @@
                 <div class="teacher-name">Скирко Галина<br>(Голока Нандини)</div>
                <a href="https://docs.google.com/forms/d/e/1FAIpQLSdBabVnMuXwZ66Mos2x5LkstwskzjzOcwI6xeicv0gqvSrNRw/viewform?usp=pp_url&entry.348608589=%D0%A1%D0%BA%D0%B8%D1%80%D0%BA%D0%BE+%D0%93%D0%B0%D0%BB%D0%B8%D0%BD%D0%B0" target="_blank" class="btn-consult">Записаться</a>
             </div>
-            
-            </div>
+        </div>
     </section>
 
     <section class="pricing">
-       <section class="pricing">
-        <h3>Подписка на месяц</h3>
-        <div style="text-decoration: line-through; color: #999;">2000 руб.</div>
+        <p class="header-subtitle">Подписка на месяц</p>
+        <div style="text-decoration: line-through; color: #999; font-size: 1.2rem; margin-top: 10px;">Стандартная цена: 2000 ₽</div>
         <div class="price-tag">1000 ₽</div>
-        <a href="https://t.me/Sergey_R" style="display:inline-block; background: var(--accent-color); color:white; padding: 15px 30px; border-radius: 50px; text-decoration:none; font-weight:bold;">ЗАРЕГИСТРИРОВАТЬСЯ В TG</a>
+        <a href="https://t.me/Sergey_R" class="cta-main">ЗАРЕГИСТРИРОВАТЬСЯ В TG</a>
     </section>
+
 </div>
 
-<div id="contactModal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h3 id="modalTitle" style="margin-bottom: 15px; color: var(--primary-color);">Запись</h3>
-        <p style="font-size: 0.9rem; margin-bottom: 20px;">Подайте заявку на личную консультацию: укажите, как с вами связаться и приоритетное время. Наставник свяжется с вами, как только сможет.</p>
-        
-        <form action="https://forms.gle/QE6xTVf2HqGBCcbt5" target="_blank">
-            <div class="form-group">
-                <label>Ваше имя</label>
-                <input type="text" placeholder="Иван Иванов" required>
-            </div>
-            <div class="form-group">
-                <label>Контакт (Телефон или TG)</label>
-                <input type="text" placeholder="@username или +7..." required>
-            </div>
-            <div class="form-group">
-                <label>Удобное время для связи</label>
-                <input type="text" placeholder="Будни после 18:00">
-            </div>
-            <button type="submit" class="btn-send">ОТПРАВИТЬ ЗАЯВКУ</button>
-        </form>
-        <p style="font-size: 0.7rem; color: #999; margin-top: 10px;">*При нажатии вы перейдете в Google Форму для подтверждения данных</p>
-    </div>
-</div>
-
-<script>
-    function openModal(name) {
-        document.getElementById('modalTitle').innerText = 'Запись к ' + name;
-        document.getElementById('contactModal').style.display = "block";
-    }
-    function closeModal() {
-        document.getElementById('contactModal').style.display = "none";
-    }
-    window.onclick = function(event) {
-        if (event.target == document.getElementById('contactModal')) closeModal();
-    }
-</script>
+<footer style="text-align: center; padding: 40px; color: #8d6e63; font-size: 0.9rem;">
+    &copy; 2026 Практикум СУТРА. Пространство любви и трансформации.
+</footer>
 
 </body>
 </html>
