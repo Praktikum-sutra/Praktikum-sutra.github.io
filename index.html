@@ -6,13 +6,14 @@
     <title>Практикум СУТРА | Жить в потоке восторга</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #6d4c41; /* Теплый коричневый */
-            --accent-color: #f57c00;  /* Оранжевый акцент */
-            --bg-color: #fffaf0;     /* Кремовый фон */
+            --primary-color: #6d4c41;
+            --accent-color: #f57c00;
+            --bg-color: #fffaf0;
             --text-color: #3e2723;
+            --white: #ffffff;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,148 +25,192 @@
             line-height: 1.6;
         }
 
-        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
 
-        /* Шапка */
         header {
             text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(rgba(255,250,240,0.8), rgba(255,250,240,0.8)), 
+            padding: 80px 20px;
+            background: linear-gradient(rgba(255,250,240,0.85), rgba(255,250,240,0.85)), 
                         url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=1000');
             background-size: cover;
             background-position: center;
+            border-bottom: 1px solid #eee;
         }
 
-        h1 { 
-            font-family: 'Playfair Display', serif;
-            font-size: 2.5rem; 
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--primary-color); margin-bottom: 10px; }
+        .subtitle { font-size: 1.1rem; font-weight: bold; color: var(--accent-color); text-transform: uppercase; letter-spacing: 3px; }
 
-        .subtitle { font-size: 1.2rem; font-weight: bold; color: var(--accent-color); text-transform: uppercase; letter-spacing: 2px; }
+        section { margin: 30px 0; padding: 30px; background: var(--white); border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+        h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 20px; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 15px; }
 
-        /* Секции */
-        section { margin: 40px 0; padding: 20px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+        /* Блок новостей и расписания */
+        .news-card { background: #fff3e0; border: 1px solid #ffe0b2; border-radius: 15px; padding: 20px; }
+        .schedule-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px dashed #dec8b1; }
+        .schedule-item:last-child { border-bottom: none; }
+        .event-date { font-weight: bold; color: var(--accent-color); min-width: 120px; }
+        .event-topic { flex-grow: 1; padding-left: 15px; }
 
-        h2 { border-bottom: 2px solid var(--accent-color); display: inline-block; margin-bottom: 20px; padding-bottom: 5px; }
-
-        .highlight-box {
-            background: #fff3e0;
-            border-left: 5px solid var(--accent-color);
-            padding: 15px;
-            margin: 20px 0;
-            font-style: italic;
-        }
-
-        /* Список тем */
-        .topics-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
-            margin-top: 15px;
-        }
-        .topic-item { background: #fbe9e7; padding: 10px; border-radius: 8px; font-size: 0.9rem; text-align: center; }
-
-        /* Ведущие */
-        .teachers-list { list-style: none; }
-        .teachers-list li { margin-bottom: 8px; padding-left: 25px; position: relative; }
-        .teachers-list li::before { content: "🪷"; position: absolute; left: 0; }
-
-        /* Цена и Кнопка */
-        .pricing {
-            text-align: center;
-            padding: 30px;
-            border: 2px dashed var(--accent-color);
-            border-radius: 15px;
-        }
-
-        .old-price { text-decoration: line-through; color: #888; font-size: 1.2rem; }
-        .new-price { font-size: 2rem; color: #d32f2f; font-weight: bold; display: block; }
+        /* Сетка преподавателей */
+        .teachers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-top: 20px; }
+        .teacher-card { text-align: center; background: #fafafa; padding: 20px; border-radius: 15px; border: 1px solid #f0f0f0; transition: transform 0.3s; }
+        .teacher-card:hover { transform: translateY(-5px); }
+        .teacher-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+        .teacher-name { font-weight: 700; margin-bottom: 5px; min-height: 50px; }
         
-        .cta-button {
+        .btn-consult {
             display: inline-block;
-            background-color: var(--accent-color);
-            color: white;
-            padding: 18px 35px;
+            background: transparent;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            padding: 8px 15px;
+            border-radius: 20px;
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            margin-top: 20px;
-            transition: transform 0.2s;
-            box-shadow: 0 4px 15px rgba(245, 124, 0, 0.4);
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-top: 10px;
+            cursor: pointer;
+            transition: 0.3s;
         }
+        .btn-consult:hover { background: var(--accent-color); color: white; }
 
-        .cta-button:hover { transform: scale(1.05); }
+        /* Тариф и Кнопка */
+        .pricing { text-align: center; border: 2px solid #e0e0e0; border-radius: 20px; padding: 40px; background: #fff; }
+        .price-tag { font-size: 2.5rem; color: #d32f2f; font-weight: bold; margin: 15px 0; }
+        .old-price { text-decoration: line-through; color: #999; font-size: 1.2rem; }
+        .cta-main { display: inline-block; background: var(--accent-color); color: white; padding: 20px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(245, 124, 0, 0.3); margin-top: 20px; }
 
-        /* Адаптивность для мобильных */
+        /* Модальное окно */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); }
+        .modal-content { background: white; margin: 15% auto; padding: 30px; border-radius: 20px; width: 90%; max-width: 450px; text-align: center; position: relative; }
+        .close { position: absolute; right: 20px; top: 15px; font-size: 28px; cursor: pointer; color: #999; }
+
         @media (max-width: 600px) {
             h1 { font-size: 1.8rem; }
-            .topics-grid { grid-template-columns: 1fr; }
-            .container { padding: 10px; }
+            .schedule-item { flex-direction: column; align-items: flex-start; }
+            .event-date { margin-bottom: 5px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container">
-            <p class="subtitle">Практикум С.УТРА</p>
-            <h1>«Жить в потоке восторга»</h1>
-            <p>Пространство для встречи с собой и трансформации</p>
-        </div>
-    </header>
-
+<header>
     <div class="container">
-        
-        <section>
-            <h2>О практикуме</h2>
-            <p>Это особое время, чтобы остановиться и продолжать трансформировать себя через методику С.УТРА на пути любви и преданности.</p>
-            <div class="highlight-box">
-                8 занятий в месяц: будни — для зарядки энергией, выходные — для погружения в практику.
-            </div>
-        </section>
-
-        <section>
-            <h2>Что мы разбираем?</h2>
-            <div class="topics-grid">
-                <div class="topic-item">Страхи и лень</div>
-                <div class="topic-item">Привязанности</div>
-                <div class="topic-item">Здоровье</div>
-                <div class="topic-item">Отношения с детьми</div>
-                <div class="topic-item">Супружество</div>
-                <div class="topic-item">Связь с Господом</div>
-            </div>
-        </section>
-
-        <section>
-            <h2>Ведущие проекта</h2>
-            <ul class="teachers-list">
-                <li>Лариса Никитенко (Лалита Винодини)</li>
-                <li>Сергей Васильев</li>
-                <li>Мила Кораблева (Ананда Вриндаван)</li>
-                <li>Игорь Федоровцев (Голока Ишвара)</li>
-                <li>Оксана Ефремова (Враджа Раса)</li>
-                <li>Галина Скирко (Голока Нандини)</li>
-                <li>Наталья Старостина (Севаприя)</li>
-            </ul>
-        </section>
-
-        <section class="pricing">
-            <h3>Специальное предложение</h3>
-            <p>Участие по подписке</p>
-            <span class="old-price">2000 руб/мес</span>
-            <span class="new-price">1000 руб/мес</span>
-            <p><small>*Для тех, кто зарегистрируется сегодня</small></p>
-            
-            <a href="https://t.me/Sergey_R" class="cta-button">ЗАРЕГИСТРИРОВАТЬСЯ В TG</a>
-        </section>
-
+        <p class="subtitle">Практикум С.УТРА</p>
+        <h1>«Жить в потоке восторга»</h1>
+        <p>Ваше пространство для трансформации и любви</p>
     </div>
+</header>
 
-    <footer style="text-align: center; padding: 20px; color: #888; font-size: 0.8rem;">
-        &copy; 2026 Практикум С.УТРА. Часть средств направляется на духовные проекты.
-    </footer>
+<div class="container">
+
+    <section>
+        <h2>Важные новости</h2>
+        <div class="news-card">
+            <p style="margin-bottom: 15px;"><strong>📅 Расписание ближайших факультативов:</strong></p>
+            
+            <div class="schedule-item">
+                <div class="event-date">Вторник, 19:00</div>
+                <div class="event-topic">Тема: Преодоление страхов и работа с внутренней энергией.</div>
+            </div>
+
+            <div class="schedule-item">
+                <div class="event-date">Суббота, 11:00</div>
+                <div class="event-topic">Тема: Глубокое погружение в практику и ответы на вопросы.</div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h2>Ведущие проекта</h2>
+        <p style="margin-bottom: 20px; color: #666;">Вы можете записаться на личную консультацию к любому из наших наставников.</p>
+        
+        <div class="teachers-grid">
+            <div class="teacher-card">
+                <img src="larisa.jpg" alt="Лариса Никитенко" class="teacher-photo">
+                <div class="teacher-name">Лариса Никитенко<br>(Лалита Винодини)</div>
+                <button class="btn-consult" onclick="openModal('Ларисе Никитенко')">Записаться</button>
+            </div>
+
+            <div class="teacher-card">
+                <img src="sergey.jpg" alt="Сергей Васильев" class="teacher-photo">
+                <div class="teacher-name">Сергей Васильев</div>
+                <button class="btn-consult" onclick="openModal('Сергею Васильеву')">Записаться</button>
+            </div>
+
+            <div class="teacher-card">
+                <img src="mila.jpg" alt="Мила Кораблева" class="teacher-photo">
+                <div class="teacher-name">Мила Кораблева<br>(Ананда Вриндаван)</div>
+                <button class="btn-consult" onclick="openModal('Миле Кораблевой')">Записаться</button>
+            </div>
+
+            <div class="teacher-card">
+                <img src="igor.jpg" alt="Игорь Федоровцев" class="teacher-photo">
+                <div class="teacher-name">Игорь Федоровцев<br>(Голока Ишвара)</div>
+                <button class="btn-consult" onclick="openModal('Игорю Федоровцеву')">Записаться</button>
+            </div>
+
+            <div class="teacher-card">
+                <img src="oksana.jpg" alt="Оксана Ефремова" class="teacher-photo">
+                <div class="teacher-name">Оксана Ефремова<br>(Враджараса)</div>
+                <button class="btn-consult" onclick="openModal('Оксане Ефремовой.')">Записаться</button>
+            </div>
+
+            <div class="teacher-card">
+                <img src="igor.jpg" alt="Наталья Старостина" class="teacher-photo">
+                <div class="teacher-name">Наталья Старостина<br>(Севаприя)</div>
+                <button class="btn-consult" onclick="openModal('Наталье Старостиной')">Записаться</button>
+            </div>
+
+            <div class="teacher-card">
+                <img src="igor.jpg" alt="Скирко Галина" class="teacher-photo">
+                <div class="teacher-name">Скирко Галина<br>(Голока Нандини)</div>
+                <button class="btn-consult" onclick="openModal('Скирко Галине')">Записаться</button>
+            </div>
+            
+            </div>
+    </section>
+
+    <section class="pricing">
+        <p class="subtitle">Спецпредложение сегодня</p>
+        <div class="old-price">2000 рублей в месяц</div>
+        <div class="price-tag">1000 ₽ / мес</div>
+        <p>Станьте частью нашего глубокого сообщества</p>
+        <a href="https://t.me/Sergey_R" class="cta-main">ЗАРЕГИСТРИРОВАТЬСЯ В TG</a>
+    </section>
+
+</div>
+
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3 id="modalTitle" style="margin-bottom: 15px; color: var(--primary-color);">Запись на консультацию</h3>
+        <p>Чтобы записаться на личную консультацию к выбранному наставнику, пожалуйста, напишите сообщение в личные связи Telegram:</p>
+        <div style="margin-top: 20px;">
+            <a href="https://t.me/Sergey_R" style="color: var(--accent-color); font-weight: bold; text-decoration: none;">@Sergey_R</a> или 
+            <a href="https://t.me/golokeshvaradas" style="color: var(--accent-color); font-weight: bold; text-decoration: none;">@golokeshvaradas</a>
+        </div>
+        <p style="font-size: 0.8rem; color: #888; margin-top: 15px;">Укажите в сообщении имя наставника, к которому хотите попасть.</p>
+    </div>
+</div>
+
+<script>
+    function openModal(name) {
+        document.getElementById('modalTitle').innerText = 'Запись к ' + name;
+        document.getElementById('myModal').style.display = "block";
+    }
+
+    function closeModal() {
+        document.getElementById('myModal').style.display = "none";
+    }
+
+    // Закрытие при клике вне окна
+    window.onclick = function(event) {
+        let modal = document.getElementById('myModal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
 
 </body>
 </html>
