@@ -17,105 +17,77 @@
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        body {
-            font-family: 'Montserrat', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
-        }
-
+        body { font-family: 'Montserrat', sans-serif; background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
         .container { max-width: 900px; margin: 0 auto; padding: 20px; }
 
-        header {
-            text-align: center;
-            padding: 80px 20px;
-            background: linear-gradient(rgba(255,250,240,0.85), rgba(255,250,240,0.85)), 
-                        url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=1000');
-            background-size: cover;
-            background-position: center;
-            border-bottom: 1px solid #eee;
-        }
-
-        h1 { font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--primary-color); margin-bottom: 10px; }
-        .subtitle { font-size: 1.1rem; font-weight: bold; color: var(--accent-color); text-transform: uppercase; letter-spacing: 3px; }
+        header { text-align: center; padding: 60px 20px; background: #fff; border-bottom: 1px solid #eee; }
+        h1 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary-color); }
 
         section { margin: 30px 0; padding: 30px; background: var(--white); border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
         h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 20px; color: var(--primary-color); border-left: 4px solid var(--accent-color); padding-left: 15px; }
 
-        /* Блок новостей и расписания */
-        .news-card { background: #fff3e0; border: 1px solid #ffe0b2; border-radius: 15px; padding: 20px; }
-        .schedule-item { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px dashed #dec8b1; }
-        .schedule-item:last-child { border-bottom: none; }
-        .event-date { font-weight: bold; color: var(--accent-color); min-width: 120px; }
-        .event-topic { flex-grow: 1; padding-left: 15px; }
+        /* НОВОСТИ С КАРТИНКОЙ */
+        .news-container { display: flex; gap: 20px; background: #fff3e0; border-radius: 15px; overflow: hidden; border: 1px solid #ffe0b2; }
+        .news-img { width: 40%; object-fit: cover; min-height: 200px; background: #eee; }
+        .news-content { padding: 20px; width: 60%; }
+        
+        @media (max-width: 600px) {
+            .news-container { flex-direction: column; }
+            .news-img { width: 100%; height: 200px; }
+            .news-content { width: 100%; }
+        }
 
-        /* Сетка преподавателей */
-        .teachers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; margin-top: 20px; }
-        .teacher-card { text-align: center; background: #fafafa; padding: 20px; border-radius: 15px; border: 1px solid #f0f0f0; transition: transform 0.3s; }
-        .teacher-card:hover { transform: translateY(-5px); }
-        .teacher-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 4px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
-        .teacher-name { font-weight: 700; margin-bottom: 5px; min-height: 50px; }
+        /* ПРЕПОДАВАТЕЛИ */
+        .teachers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 25px; }
+        .teacher-card { text-align: center; background: #fafafa; padding: 20px; border-radius: 15px; border: 1px solid #f0f0f0; }
+        .teacher-photo { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; margin-bottom: 15px; border: 3px solid white; box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
         
         .btn-consult {
             display: inline-block;
-            background: transparent;
-            border: 1px solid var(--accent-color);
-            color: var(--accent-color);
-            padding: 8px 15px;
-            border-radius: 20px;
+            background: var(--accent-color);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
             text-decoration: none;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
-            margin-top: 10px;
+            border: none;
             cursor: pointer;
-            transition: 0.3s;
+            margin-top: 10px;
         }
-        .btn-consult:hover { background: var(--accent-color); color: white; }
 
-        /* Тариф и Кнопка */
-        .pricing { text-align: center; border: 2px solid #e0e0e0; border-radius: 20px; padding: 40px; background: #fff; }
-        .price-tag { font-size: 2.5rem; color: #d32f2f; font-weight: bold; margin: 15px 0; }
-        .old-price { text-decoration: line-through; color: #999; font-size: 1.2rem; }
-        .cta-main { display: inline-block; background: var(--accent-color); color: white; padding: 20px 40px; border-radius: 50px; text-decoration: none; font-weight: bold; font-size: 1.1rem; box-shadow: 0 10px 20px rgba(245, 124, 0, 0.3); margin-top: 20px; }
+        /* МОДАЛЬНОЕ ОКНО */
+        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(5px); }
+        .modal-content { background: white; margin: 10% auto; padding: 30px; border-radius: 20px; width: 90%; max-width: 500px; position: relative; }
+        .close { position: absolute; right: 20px; top: 15px; font-size: 28px; cursor: pointer; }
+        
+        .form-group { margin-bottom: 15px; text-align: left; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: 600; font-size: 0.9rem; }
+        .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; }
 
-        /* Модальное окно */
-        .modal { display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); }
-        .modal-content { background: white; margin: 15% auto; padding: 30px; border-radius: 20px; width: 90%; max-width: 450px; text-align: center; position: relative; }
-        .close { position: absolute; right: 20px; top: 15px; font-size: 28px; cursor: pointer; color: #999; }
+        .btn-send { background: #2e7d32; color: white; border: none; padding: 12px 30px; border-radius: 50px; font-weight: bold; cursor: pointer; width: 100%; margin-top: 10px; }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
-            .schedule-item { flex-direction: column; align-items: flex-start; }
-            .event-date { margin-bottom: 5px; }
-        }
+        .pricing { text-align: center; background: #fff; padding: 40px; border-radius: 20px; border: 2px solid #e0e0e0; }
+        .price-tag { font-size: 2.2rem; color: #d32f2f; font-weight: bold; margin: 10px 0; }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="container">
-        <p class="subtitle">Практикум С.УТРА</p>
-        <h1>«Жить в потоке восторга»</h1>
-        <p>Ваше пространство для трансформации и любви</p>
-    </div>
-</header>
-
 <div class="container">
+    <header>
+        <p style="color: var(--accent-color); font-weight: bold; letter-spacing: 2px;">ПРАКТИКУМ СУТРА</p>
+        <h1>«Жить в потоке восторга»</h1>
+    </header>
 
     <section>
         <h2>Важные новости</h2>
-        <div class="news-card">
-            <p style="margin-bottom: 15px;"><strong>📅 Расписание ближайших факультативов:</strong></p>
-            
-            <div class="schedule-item">
-                <div class="event-date">Вторник, 19:00</div>
-                <div class="event-topic">Тема: Преодоление страхов и работа с внутренней энергией.</div>
-            </div>
-
-            <div class="schedule-item">
-                <div class="event-date">Суббота, 11:00</div>
-                <div class="event-topic">Тема: Глубокое погружение в практику и ответы на вопросы.</div>
+        <div class="news-container">
+            <img src="news.jpg" alt="Событие" class="news-img">
+            <div class="news-content">
+                <p><strong>📅 Ближайший факультатив:</strong></p>
+                <p>Тема: "Гармония в отношениях"</p>
+                <p>Время: Суббота, 11:00 (МСК)</p>
+                <p style="margin-top: 10px; font-size: 0.9rem; color: #555;">Присоединяйтесь к нашей глубокой практике трансформации.</p>
             </div>
         </div>
     </section>
@@ -177,44 +149,49 @@
     </section>
 
     <section class="pricing">
-        <p class="subtitle">Спецпредложение сегодня</p>
-        <div class="old-price">2000 рублей в месяц</div>
-        <div class="price-tag">1000 ₽ / мес</div>
-        <p>Станьте частью нашего глубокого сообщества</p>
-        <a href="https://t.me/Sergey_R" class="cta-main">ЗАРЕГИСТРИРОВАТЬСЯ В TG</a>
+       <section class="pricing">
+        <h3>Подписка на месяц</h3>
+        <div style="text-decoration: line-through; color: #999;">2000 руб.</div>
+        <div class="price-tag">1000 ₽</div>
+        <a href="https://t.me/Sergey_R" style="display:inline-block; background: var(--accent-color); color:white; padding: 15px 30px; border-radius: 50px; text-decoration:none; font-weight:bold;">ЗАРЕГИСТРИРОВАТЬСЯ В TG</a>
     </section>
-
 </div>
 
-<div id="myModal" class="modal">
+<div id="contactModal" class="modal">
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h3 id="modalTitle" style="margin-bottom: 15px; color: var(--primary-color);">Запись на консультацию</h3>
-        <p>Чтобы записаться на личную консультацию к выбранному наставнику, пожалуйста, напишите сообщение в личные связи Telegram:</p>
-        <div style="margin-top: 20px;">
-            <a href="https://t.me/Sergey_R" style="color: var(--accent-color); font-weight: bold; text-decoration: none;">@Sergey_R</a> или 
-            <a href="https://t.me/golokeshvaradas" style="color: var(--accent-color); font-weight: bold; text-decoration: none;">@golokeshvaradas</a>
-        </div>
-        <p style="font-size: 0.8rem; color: #888; margin-top: 15px;">Укажите в сообщении имя наставника, к которому хотите попасть.</p>
+        <h3 id="modalTitle" style="margin-bottom: 15px; color: var(--primary-color);">Запись</h3>
+        <p style="font-size: 0.9rem; margin-bottom: 20px;">Подайте заявку на личную консультацию: укажите, как с вами связаться и приоритетное время. Наставник свяжется с вами, как только сможет.</p>
+        
+        <form action="https://docs.google.com/forms/u/0/YOUR_FORM_ID/viewform" target="_blank">
+            <div class="form-group">
+                <label>Ваше имя</label>
+                <input type="text" placeholder="Иван Иванов" required>
+            </div>
+            <div class="form-group">
+                <label>Контакт (Телефон или TG)</label>
+                <input type="text" placeholder="@username или +7..." required>
+            </div>
+            <div class="form-group">
+                <label>Удобное время для связи</label>
+                <input type="text" placeholder="Будни после 18:00">
+            </div>
+            <button type="submit" class="btn-send">ОТПРАВИТЬ ЗАЯВКУ</button>
+        </form>
+        <p style="font-size: 0.7rem; color: #999; margin-top: 10px;">*При нажатии вы перейдете в Google Форму для подтверждения данных</p>
     </div>
 </div>
 
 <script>
     function openModal(name) {
         document.getElementById('modalTitle').innerText = 'Запись к ' + name;
-        document.getElementById('myModal').style.display = "block";
+        document.getElementById('contactModal').style.display = "block";
     }
-
     function closeModal() {
-        document.getElementById('myModal').style.display = "none";
+        document.getElementById('contactModal').style.display = "none";
     }
-
-    // Закрытие при клике вне окна
     window.onclick = function(event) {
-        let modal = document.getElementById('myModal');
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
+        if (event.target == document.getElementById('contactModal')) closeModal();
     }
 </script>
 
