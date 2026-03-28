@@ -1,10 +1,171 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>Мой новый проект</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Практикум СУТРА | Жить в потоке восторга</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6d4c41; /* Теплый коричневый */
+            --accent-color: #f57c00;  /* Оранжевый акцент */
+            --bg-color: #fffaf0;     /* Кремовый фон */
+            --text-color: #3e2723;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container { max-width: 800px; margin: 0 auto; padding: 20px; }
+
+        /* Шапка */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(rgba(255,250,240,0.8), rgba(255,250,240,0.8)), 
+                        url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&q=80&w=1000');
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1 { 
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem; 
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .subtitle { font-size: 1.2rem; font-weight: bold; color: var(--accent-color); text-transform: uppercase; letter-spacing: 2px; }
+
+        /* Секции */
+        section { margin: 40px 0; padding: 20px; background: white; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+
+        h2 { border-bottom: 2px solid var(--accent-color); display: inline-block; margin-bottom: 20px; padding-bottom: 5px; }
+
+        .highlight-box {
+            background: #fff3e0;
+            border-left: 5px solid var(--accent-color);
+            padding: 15px;
+            margin: 20px 0;
+            font-style: italic;
+        }
+
+        /* Список тем */
+        .topics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .topic-item { background: #fbe9e7; padding: 10px; border-radius: 8px; font-size: 0.9rem; text-align: center; }
+
+        /* Ведущие */
+        .teachers-list { list-style: none; }
+        .teachers-list li { margin-bottom: 8px; padding-left: 25px; position: relative; }
+        .teachers-list li::before { content: "🪷"; position: absolute; left: 0; }
+
+        /* Цена и Кнопка */
+        .pricing {
+            text-align: center;
+            padding: 30px;
+            border: 2px dashed var(--accent-color);
+            border-radius: 15px;
+        }
+
+        .old-price { text-decoration: line-through; color: #888; font-size: 1.2rem; }
+        .new-price { font-size: 2rem; color: #d32f2f; font-weight: bold; display: block; }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: white;
+            padding: 18px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: transform 0.2s;
+            box-shadow: 0 4px 15px rgba(245, 124, 0, 0.4);
+        }
+
+        .cta-button:hover { transform: scale(1.05); }
+
+        /* Адаптивность для мобильных */
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8rem; }
+            .topics-grid { grid-template-columns: 1fr; }
+            .container { padding: 10px; }
+        }
+    </style>
 </head>
 <body>
-    <h1>Привет! Это мой сайт на GitHub Pages</h1>
-    <p>Здесь скоро будет информация о курсах и автоматизации.</p>
+
+    <header>
+        <div class="container">
+            <p class="subtitle">Практикум С.УТРА</p>
+            <h1>«Жить в потоке восторга»</h1>
+            <p>Пространство для встречи с собой и трансформации</p>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <section>
+            <h2>О практикуме</h2>
+            <p>Это особое время, чтобы остановиться и продолжать трансформировать себя через методику С.УТРА на пути любви и преданности.</p>
+            <div class="highlight-box">
+                8 занятий в месяц: будни — для зарядки энергией, выходные — для погружения в практику.
+            </div>
+        </section>
+
+        <section>
+            <h2>Что мы разбираем?</h2>
+            <div class="topics-grid">
+                <div class="topic-item">Страхи и лень</div>
+                <div class="topic-item">Привязанности</div>
+                <div class="topic-item">Здоровье</div>
+                <div class="topic-item">Отношения с детьми</div>
+                <div class="topic-item">Супружество</div>
+                <div class="topic-item">Связь с Господом</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Ведущие проекта</h2>
+            <ul class="teachers-list">
+                <li>Лариса Никитенко (Лалита Винодини)</li>
+                <li>Сергей Васильев</li>
+                <li>Мила Кораблева (Ананда Вриндаван)</li>
+                <li>Игорь Федоровцев (Голока Ишвара)</li>
+                <li>Оксана Ефремова (Враджа Раса)</li>
+                <li>Галина Скирко (Голока Нандини)</li>
+                <li>Наталья Старостина (Севаприя)</li>
+            </ul>
+        </section>
+
+        <section class="pricing">
+            <h3>Специальное предложение</h3>
+            <p>Участие по подписке</p>
+            <span class="old-price">2000 руб/мес</span>
+            <span class="new-price">1000 руб/мес</span>
+            <p><small>*Для тех, кто зарегистрируется сегодня</small></p>
+            
+            <a href="https://t.me/Sergey_R" class="cta-button">ЗАРЕГИСТРИРОВАТЬСЯ В TG</a>
+        </section>
+
+    </div>
+
+    <footer style="text-align: center; padding: 20px; color: #888; font-size: 0.8rem;">
+        &copy; 2026 Практикум С.УТРА. Часть средств направляется на духовные проекты.
+    </footer>
+
 </body>
 </html>
